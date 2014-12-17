@@ -19,9 +19,11 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
 		<![endif]-->
 
+		<!-- TODO Move to SCSS -->
 		<style type="text/css">
 			h2 {
 				margin-top: 0;
+				margin-bottom: 0;
 			}
 			.bottomSeparated {
 				margin-bottom: 0.5em;
@@ -36,12 +38,15 @@
 				display: inline-block;
 			}
 			.doRoll {
-				padding: 1em;
+				padding: 0.5em 1em;
 			}
 			.panel {
 				background-color: #eee;
 				padding: 0.5em;
 				border: 1px solid #ccc;
+			}
+			.disabledDie {
+				opacity: 0.5;
 			}
 		</style>
 
@@ -54,6 +59,7 @@
 			<div class="row">
 				<div class="sm-8 lg-5 has-gutter">
 					<h2>One Ring Roller</h2>
+					<div>Alpha v0.0.1</div>
 				</div>
 				<div class="sm-4 lg-7 has-gutter topPaddedSmall bottomSeparated">
 					<input type="submit" value="Roll" class="doRoll"/>
@@ -79,7 +85,7 @@
 								<span>Two high</span>
 							</label>
 							<label class="radio">
-								<input name="featDice" type="radio" value="-2">
+								<input name="featDice" type="radio" value="3">
 								<span>Two low</span>
 							</label>
 							<label class="radio">
@@ -151,18 +157,14 @@
 					<div class="row">
 						<div class="sm-12 has-gutter">
 							<span id="noRoll">-- press roll first --</span>
-							<div class="d12es">
-								<span id="1d12" class="dice dice-d12-1 hide"></span>
-								<span id="1d12" class="dice dice-d12-1 hide"></span>
-							</div>
-							<div class="d6es">
-								<span class="dice dice-d6-1 hide"></span>
-								<span class="dice dice-d6-1 hide"></span>
-								<span class="dice dice-d6-1 hide"></span>
-								<span class="dice dice-d6-1 hide"></span>
-								<span class="dice dice-d6-1 hide"></span>
-								<span class="dice dice-d6-1 hide"></span>
-							</div>
+							<span class="d12 dice dice-d12-1 hide"></span>
+							<span class="d12 dice dice-d12-1 hide"></span>
+							<span class="d6 dice dice-d6-1 hide"></span>
+							<span class="d6 dice dice-d6-1 hide"></span>
+							<span class="d6 dice dice-d6-1 hide"></span>
+							<span class="d6 dice dice-d6-1 hide"></span>
+							<span class="d6 dice dice-d6-1 hide"></span>
+							<span class="d6 dice dice-d6-1 hide"></span>
 						</div>
 					</div>
 					<div class="row">
