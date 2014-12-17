@@ -41,119 +41,131 @@
 			</div>
 		</div>
 
-		<form name="diceForm" action="#" method="POST">
-			<div class="row bottomSeparated">
-				<div class="sm-12 md-3 has-gutter bottomSeparated">
-					<strong>Feat Dice</strong>
-				</div>
-				<div class="sm-12 md-9 has-gutter">
-					<label class="radio">
-						<input name="featDice" type="radio" value="1" checked="checked">
-						<span>One</span>
-					</label>
-					<label class="radio">
-						<input name="featDice" type="radio" value="2">
-						<span>Two high</span>
-					</label>
-					<label class="radio">
-						<input name="featDice" type="radio" value="-2">
-						<span>Two low</span>
-					</label>
-					<label class="radio">
-						<input name="featDice" type="radio" value="0">
-						<span>None</span>
-					</label>
-				</div>
-			</div>
-			<div class="row bottomSeparated">
-				<div class="sm-12 md-3 has-gutter bottomSeparated">
-					<strong>Success Dice</strong>
-				</div>
-				<div class="sm-12 md-9 has-gutter">
-					<label class="radio">
-						<input name="successDice" type="radio" value="1">
-						<span>One</span>
-					</label>
-					<label class="radio">
-						<input name="successDice" type="radio" value="2">
-						<span>Two</span>
-					</label>
-					<label class="radio">
-						<input name="successDice" type="radio" value="3" checked="checked">
-						<span>Three</span>
-					</label>
-					<label class="radio">
-						<input name="successDice" type="radio" value="4">
-						<span>Four</span>
-					</label>
-					<label class="radio">
-						<input name="successDice" type="radio" value="5">
-						<span>Five</span>
-					</label>
-					<label class="radio">
-						<input name="successDice" type="radio" value="6">
-						<span>Six</span>
-					</label>
-				</div>
-			</div>
-			<div class="row bottomSeparated">
-				<div class="sm-12 has-gutter">
-					<strong>Conditions</strong>
-				</div>
-			</div>
-			<div class="row bottomSeparated">
-				<div class="sm-6 has-gutter">
-					<label class="checkbox">
-						<input name="isWeary" type="checkbox" value="1">
-						<span>Weary?</span>
-					</label>
-				</div>
-				<div class="sm-6 has-gutter">
-					<label class="checkbox">
-						<input name="isEnemy" type="checkbox" value="1">
-						<span>Enemy roll?</span>
-					</label>
-				</div>
-			</div>
-			<div class="row bottomSeparated">
-				<div class="sm-12 has-gutter">
-					<input type="submit" value="Roll"/>
-				</div>
-			</div>
-		</form>
+		<div class="row">
 
-		<div class="row">
-			<div class="sm-12 has-gutter bottomSeparated">
-				<strong>Result #<span id="rollCount">1</span></strong>
-			</div>
-		</div>
-		<div class="row">
-			<div class="sm-12 has-gutter">
-				<span id="noRoll">-- press roll first --</span>
-				<div class="d6es">
-					<span class="dice dice-d6-1 hide"></span>
-					<span class="dice dice-d6-1 hide"></span>
-					<span class="dice dice-d6-1 hide"></span>
-					<span class="dice dice-d6-1 hide"></span>
-					<span class="dice dice-d6-1 hide"></span>
-					<span class="dice dice-d6-1 hide"></span>
-				</div>
-				<div class="d12es">
-					<span id="1d12" class="dice dice-d12-1 hide"></span>
-					<span id="1d12" class="dice dice-d12-1 hide"></span>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="sm-12 has-gutter">
+			<div class="sm-12 lg-5 has-gutter">
 
-				<div id="resultText" class="hide">
-					<strong><span class="successType">narrow</span></strong>
-					<span class="successResult">success</span>
-					with total <span id="rollTotal">0</span>.
-				</div>
+				<form name="diceForm" action="#" method="POST">
+					<div class="row bottomSeparated">
+						<div class="sm-12 md-3 has-gutter bottomSeparated">
+							<strong>Feat Dice</strong>
+						</div>
+						<div class="sm-12 md-9 has-gutter">
+							<label class="radio">
+								<input name="featDice" type="radio" value="1" checked="checked">
+								<span>One</span>
+							</label>
+							<label class="radio">
+								<input name="featDice" type="radio" value="2">
+								<span>Two high</span>
+							</label>
+							<label class="radio">
+								<input name="featDice" type="radio" value="-2">
+								<span>Two low</span>
+							</label>
+							<label class="radio">
+								<input name="featDice" type="radio" value="0">
+								<span>None</span>
+							</label>
+						</div>
+					</div>
+					<div class="row bottomSeparated">
+						<div class="sm-12 md-3 has-gutter bottomSeparated">
+							<strong>Success Dice</strong>
+						</div>
+						<div class="sm-12 md-9 has-gutter">
+							<label class="radio">
+								<input name="successDice" type="radio" value="1">
+								<span>One</span>
+							</label>
+							<label class="radio">
+								<input name="successDice" type="radio" value="2">
+								<span>Two</span>
+							</label>
+							<label class="radio">
+								<input name="successDice" type="radio" value="3" checked="checked">
+								<span>Three</span>
+							</label>
+							<label class="radio">
+								<input name="successDice" type="radio" value="4">
+								<span>Four</span>
+							</label>
+							<label class="radio">
+								<input name="successDice" type="radio" value="5">
+								<span>Five</span>
+							</label>
+							<label class="radio">
+								<input name="successDice" type="radio" value="6">
+								<span>Six</span>
+							</label>
+						</div>
+					</div>
+					<div class="row bottomSeparated">
+						<div class="sm-12 has-gutter">
+							<strong>Conditions</strong>
+						</div>
+					</div>
+					<div class="row bottomSeparated">
+						<div class="sm-6 has-gutter">
+							<label class="checkbox">
+								<input name="isWeary" type="checkbox" value="1">
+								<span>Weary?</span>
+							</label>
+						</div>
+						<div class="sm-6 has-gutter">
+							<label class="checkbox">
+								<input name="isEnemy" type="checkbox" value="1">
+								<span>Enemy roll?</span>
+							</label>
+						</div>
+					</div>
+					<div class="row bottomSeparated">
+						<div class="sm-12 has-gutter">
+							<input type="submit" value="Roll"/>
+						</div>
+					</div>
+				</form>
 
 			</div>
+
+			<div class="sm-12 lg-7 has-gutter">
+
+				<div class="row">
+					<div class="sm-12 has-gutter bottomSeparated">
+						<strong>Result #<span id="rollCount">1</span></strong>
+					</div>
+				</div>
+				<div class="row">
+					<div class="sm-12 has-gutter">
+						<span id="noRoll">-- press roll first --</span>
+						<div class="d6es">
+							<span class="dice dice-d6-1 hide"></span>
+							<span class="dice dice-d6-1 hide"></span>
+							<span class="dice dice-d6-1 hide"></span>
+							<span class="dice dice-d6-1 hide"></span>
+							<span class="dice dice-d6-1 hide"></span>
+							<span class="dice dice-d6-1 hide"></span>
+						</div>
+						<div class="d12es">
+							<span id="1d12" class="dice dice-d12-1 hide"></span>
+							<span id="1d12" class="dice dice-d12-1 hide"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="sm-12 has-gutter">
+
+						<div id="resultText" class="hide">
+							<strong><span class="successType">narrow</span></strong>
+							<span class="successResult">success</span>
+							with total <span id="rollTotal">0</span>.
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
