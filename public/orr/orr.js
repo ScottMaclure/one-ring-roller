@@ -37,8 +37,8 @@
 
 	// Cache semantic elements.
 	var $noRoll = $('#noRoll');
-	var $d6es = $('.d6es > *');
-	var $d12es = $('.d12es > *');
+	var $d6es = $('.d6');
+	var $d12es = $('.d12');
 	var $resultText = $('#resultText');
 	var $rollTotal = $('#rollTotal');
 	var $successType = $('.successType');
@@ -82,7 +82,7 @@
 				if (result === 6) {
 					sixCount += 1;
 				}
-				$d6.removeClass().addClass('dice dice-d6-' + result);
+				$d6.removeClass().addClass('d6 dice dice-d6-' + result);
 				if (!isWeary || result > 3) {
 					rollTotal += result;
 				}
@@ -94,7 +94,7 @@
 			if (featDice === 1) {
 				var $die = $($d12es[0]);
 				var result = rollDie(12);
-				$die.removeClass().addClass('dice dice-d12-' + result);
+				$die.removeClass().addClass('d12 dice dice-d12-' + result);
 				if (result <= 10) {
 					rollTotal += result;
 				} else if (result === 11 && isEnemy) {
