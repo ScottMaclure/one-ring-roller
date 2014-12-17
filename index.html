@@ -20,8 +20,14 @@
 		<![endif]-->
 
 		<style type="text/css">
+			h2 {
+				margin-top: 0;
+			}
 			.bottomSeparated {
 				margin-bottom: 0.5em;
+			}
+			.topPaddedSmall {
+				padding-top: 0.25em;
 			}
 			.hide {
 				display: none !important;
@@ -35,17 +41,22 @@
 
 	<body>
 
-		<div class="row">
-			<div class="sm-12 has-gutter">
-				<h2>One Ring Roller</h2>
+		<form name="diceForm" action="#" method="POST">
+
+			<div class="row">
+				<div class="sm-8 lg-5 has-gutter">
+					<h2>One Ring Roller</h2>
+				</div>
+				<div class="sm-4 lg-7 has-gutter topPaddedSmall">
+					<input type="submit" value="Roll"/>
+				</div>
 			</div>
-		</div>
 
-		<div class="row">
+			<div class="row">
 
-			<div class="sm-12 lg-5 has-gutter">
+				<div class="sm-12 lg-5 has-gutter">
 
-				<form name="diceForm" action="#" method="POST">
+
 					<div class="row bottomSeparated">
 						<div class="sm-12 md-3 has-gutter bottomSeparated">
 							<strong>Feat Dice</strong>
@@ -119,54 +130,50 @@
 							</label>
 						</div>
 					</div>
-					<div class="row bottomSeparated">
+
+				</div>
+
+				<div class="sm-12 lg-7 has-gutter">
+
+					<div class="row">
+						<div class="sm-12 has-gutter bottomSeparated">
+							<strong>Result #<span id="rollCount">1</span></strong>
+						</div>
+					</div>
+					<div class="row">
 						<div class="sm-12 has-gutter">
-							<input type="submit" value="Roll"/>
+							<span id="noRoll">-- press roll first --</span>
+							<div class="d6es">
+								<span class="dice dice-d6-1 hide"></span>
+								<span class="dice dice-d6-1 hide"></span>
+								<span class="dice dice-d6-1 hide"></span>
+								<span class="dice dice-d6-1 hide"></span>
+								<span class="dice dice-d6-1 hide"></span>
+								<span class="dice dice-d6-1 hide"></span>
+							</div>
+							<div class="d12es">
+								<span id="1d12" class="dice dice-d12-1 hide"></span>
+								<span id="1d12" class="dice dice-d12-1 hide"></span>
+							</div>
 						</div>
 					</div>
-				</form>
+					<div class="row">
+						<div class="sm-12 has-gutter">
 
-			</div>
+							<div id="resultText" class="hide">
+								<strong><span class="successType">narrow</span></strong>
+								<span class="successResult">success</span>
+								with total <span id="rollTotal">0</span>.
+							</div>
 
-			<div class="sm-12 lg-7 has-gutter">
-
-				<div class="row">
-					<div class="sm-12 has-gutter bottomSeparated">
-						<strong>Result #<span id="rollCount">1</span></strong>
-					</div>
-				</div>
-				<div class="row">
-					<div class="sm-12 has-gutter">
-						<span id="noRoll">-- press roll first --</span>
-						<div class="d6es">
-							<span class="dice dice-d6-1 hide"></span>
-							<span class="dice dice-d6-1 hide"></span>
-							<span class="dice dice-d6-1 hide"></span>
-							<span class="dice dice-d6-1 hide"></span>
-							<span class="dice dice-d6-1 hide"></span>
-							<span class="dice dice-d6-1 hide"></span>
-						</div>
-						<div class="d12es">
-							<span id="1d12" class="dice dice-d12-1 hide"></span>
-							<span id="1d12" class="dice dice-d12-1 hide"></span>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="sm-12 has-gutter">
 
-						<div id="resultText" class="hide">
-							<strong><span class="successType">narrow</span></strong>
-							<span class="successResult">success</span>
-							with total <span id="rollTotal">0</span>.
-						</div>
-
-					</div>
 				</div>
 
 			</div>
 
-		</div>
+		</form>
 
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="deps/barekit.min.js"></script>
