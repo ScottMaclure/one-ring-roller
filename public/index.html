@@ -103,14 +103,14 @@
 			</div>
 			<div class="row bottomSeparated">
 				<div class="sm-6 has-gutter">
-					<label class="radio">
-						<input name="isWeary" type="radio" value="1">
+					<label class="checkbox">
+						<input name="isWeary" type="checkbox" value="1">
 						<span>Weary?</span>
 					</label>
 				</div>
 				<div class="sm-6 has-gutter">
-					<label class="radio">
-						<input name="isEnemy" type="radio" value="1">
+					<label class="checkbox">
+						<input name="isEnemy" type="checkbox" value="1">
 						<span>Enemy roll?</span>
 					</label>
 				</div>
@@ -123,19 +123,36 @@
 		</form>
 
 		<div class="row">
-			<div class="sm-12 has-gutter">
-				<strong>Results #<span id="rollCount">0</span></strong>
+			<div class="sm-12 has-gutter bottomSeparated">
+				<strong>Result #<span id="rollCount">1</span></strong>
 			</div>
+		</div>
+		<div class="row">
 			<div class="sm-12 has-gutter">
 				<span id="noRoll">-- press roll first --</span>
-				<span id="1d6" class="dice dice-d6-1 hide"></span>
-				<span id="2d6" class="dice dice-d6-1 hide"></span>
-				<span id="3d6" class="dice dice-d6-1 hide"></span>
-				<span id="4d6" class="dice dice-d6-1 hide"></span>
-				<span id="5d6" class="dice dice-d6-1 hide"></span>
-				<span id="6d6" class="dice dice-d6-1 hide"></span>
-				<span id="1d12" class="dice dice-d12-1 hide"></span>
-				<span id="1d12" class="dice dice-d12-1 hide"></span>
+				<div class="d6es">
+					<span class="dice dice-d6-1 hide"></span>
+					<span class="dice dice-d6-1 hide"></span>
+					<span class="dice dice-d6-1 hide"></span>
+					<span class="dice dice-d6-1 hide"></span>
+					<span class="dice dice-d6-1 hide"></span>
+					<span class="dice dice-d6-1 hide"></span>
+				</div>
+				<div class="d12es">
+					<span id="1d12" class="dice dice-d12-1 hide"></span>
+					<span id="1d12" class="dice dice-d12-1 hide"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="sm-12 has-gutter">
+
+				<div id="resultText" class="hide">
+					<strong><span class="successType">narrow</span></strong>
+					<span class="successResult">success</span>
+					with total <span id="rollTotal">0</span>.
+				</div>
+
 			</div>
 		</div>
 
