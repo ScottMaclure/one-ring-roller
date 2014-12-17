@@ -3,12 +3,19 @@
 Requirements:
 
 * nodejs
+* bower
+* gulp
 
 To run locally:
 
 ```
-sudo npm install -g grunt-cli
 npm install
-npm start
+gulp
+```
+
+Run a local webserver:
+
+```
+./node_modules/http-server/bin/http-server
 ```
 
