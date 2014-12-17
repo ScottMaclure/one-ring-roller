@@ -22,6 +22,19 @@
 		return result + ' extraordinary';
 	}
 
+	/**
+	 * Helper function.
+	 */
+	function getDisplayDate() {
+
+		var d = new Date();
+
+		return d.getHours() + ':' +
+		d.getMinutes() + ':' +
+		d.getSeconds();
+
+	}
+
 	// Cache semantic elements.
 	var $noRoll = $('#noRoll');
 	var $d6es = $('.d6es > *');
@@ -96,7 +109,7 @@
 
 		// Update and display totals
 		$noRoll.addClass('hide');
-		$rollCount.text(rollCount);
+		$rollCount.text(getDisplayDate());
 		$successType.text(getSuccessTypeText(sixCount, automaticSuccess));
 		$rollTotal.text(rollTotal);
 		// Only matters for first foll.
