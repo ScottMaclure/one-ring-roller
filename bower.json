@@ -8,6 +8,7 @@
   "private": true,
   "devDependencies": {
     "barekit": "~0.7.0",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "jquery-serialize-object": "~2.4.3"
   }
 }

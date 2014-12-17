@@ -10,23 +10,22 @@ gulp.task('sprites-dice', function () {
 	.pipe(sprite({
 		name: 'sprite-dice',
 		style: 'sprite-dice.css',
-		cssPath: 'sprites',
+		cssPath: 'orr',
 		processor: 'css',
 		prefix: 'dice'
 	}))
-	.pipe(gulpif('*.png', gulp.dest('public/sprites'), gulp.dest('public/stylesheets')))
+	.pipe(gulpif('*.png', gulp.dest('public/orr'), gulp.dest('public/orr')))
 });
 
-gulp.task('copy-barekit', function () {
-
+gulp.task('copy-deps', function () {
 	return gulp.src([
 		'bower_components/barekit/css/barekit.css',
-		'bower_components/barekit/js/barekit.min.js'
+		'bower_components/barekit/js/barekit.min.js',
+		'bower_components/jquery-serialize-object/dist/jquery.serialize-object.min.js'
 	])
-	.pipe(gulp.dest('public/barekit'));
-
+	.pipe(gulp.dest('public/deps'));
 });
 
-gulp.task('default', ['sprites-dice', 'copy-barekit'], function() {
+gulp.task('default', ['sprites-dice', 'copy-deps'], function() {
 	console.log('Default task running.');
 });

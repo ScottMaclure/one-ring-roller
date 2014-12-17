@@ -6,26 +6,64 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+
 		<title>ORR - One Ring Roller</title>
 
-		<link rel="stylesheet" href="barekit/barekit.css">
-		<link rel="stylesheet" href="public/stylesheets/sprite-dice.css">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" href="deps/barekit.css">
+		<link rel="stylesheet" href="orr/sprite-dice.css">
 
 		<!--[if lt IE 9]>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
 		<![endif]-->
 
+		<style type="text/css">
+			.bottomSeparated {
+				margin-bottom: 1em;
+			}
+		</style>
+
 	</head>
 
 	<body>
 
-		<h1>One Ring Roller</h1>
+		<div class="row">
+			<div class="sm-12 has-gutter">
+				<h1>One Ring Roller</h1>
+			</div>
+		</div>
 
 		<form name="diceForm" action="#" method="POST">
-			<div class="row">
-				<div class="sm-12 md-6 lg-1 has-gutter">Success Dice:</div>
-				<div class="sm-12 md-6 lg-11 has-gutter">
+			<div class="row bottomSeparated">
+				<div class="sm-12 md-3 has-gutter bottomSeparated">
+					<strong>Feat Dice</strong>
+				</div>
+				<div class="sm-12 md-9 has-gutter">
+					<label class="radio">
+						<input name="featDice" type="radio" value="1" checked="checked">
+						<span>One</span>
+					</label>
+					<label class="radio">
+						<input name="featDice" type="radio" value="2">
+						<span>Two high</span>
+					</label>
+					<label class="radio">
+						<input name="featDice" type="radio" value="-2">
+						<span>Two low</span>
+					</label>
+					<label class="radio">
+						<input name="featDice" type="radio" value="0">
+						<span>None</span>
+					</label>
+				</div>
+			</div>
+			<div class="row bottomSeparated">
+				<div class="sm-12 md-3 has-gutter bottomSeparated">
+					<strong>Success Dice</strong>
+				</div>
+				<div class="sm-12 md-9 has-gutter">
 					<label class="radio">
 						<input name="successDice" type="radio" value="1">
 						<span>One</span>
@@ -35,7 +73,7 @@
 						<span>Two</span>
 					</label>
 					<label class="radio">
-						<input name="successDice" type="radio" value="3">
+						<input name="successDice" type="radio" value="3" checked="checked">
 						<span>Three</span>
 					</label>
 					<label class="radio">
@@ -52,10 +90,41 @@
 					</label>
 				</div>
 			</div>
+			<div class="row bottomSeparated">
+				<div class="sm-12 has-gutter">
+					<strong>Conditions</strong>
+				</div>
+			</div>
+			<div class="row bottomSeparated">
+				<div class="sm-6 has-gutter">
+					<label class="radio">
+						<input name="isWeary" type="radio" value="1">
+						<span>Weary?</span>
+					</label>
+				</div>
+				<div class="sm-6 has-gutter">
+					<label class="radio">
+						<input name="isEnemy" type="radio" value="1">
+						<span>Enemy roll?</span>
+					</label>
+				</div>
+			</div>
+			<div class="row bottomSeparated">
+				<div class="sm-12 has-gutter">
+					<input type="submit" value="Roll"/>
+				</div>
+			</div>
 		</form>
 
+		<div class="row">
+			<div class="sm-12 has-gutter">
+				<strong>Results</strong>
+			</div>
+		</div>
+
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-		<script src="barekit/barekit.min.js"></script>
+		<script src="deps/barekit.min.js"></script>
+		<script src="orr/orr.js"></script>
 
 	</body>
 
