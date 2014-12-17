@@ -26,6 +26,11 @@ gulp.task('copy-deps', function () {
 	.pipe(gulp.dest('public/deps'));
 });
 
+gulp.task('gh-pages', function () {
+	return gulp.src('public/**/*')
+	.pipe(gulp.dest('../one-ring-roller-gh-pages'));
+});
+
 gulp.task('default', ['sprites-dice', 'copy-deps'], function() {
 	console.log('Default task running.');
 });
