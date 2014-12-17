@@ -1,0 +1,112 @@
+.dice {
+  background-image: url('sprite-dice.png');
+}
+
+.dice-d6-6 {
+  background-position: -5px -5px;
+  width: 72px;
+  height: 72px;
+}
+
+.dice-d6-5 {
+  background-position: -5px -87px;
+  width: 72px;
+  height: 72px;
+}
+
+.dice-d6-3 {
+  background-position: -5px -169px;
+  width: 72px;
+  height: 72px;
+}
+
+.dice-d6-2 {
+  background-position: -5px -251px;
+  width: 72px;
+  height: 72px;
+}
+
+.dice-d6-1 {
+  background-position: -5px -333px;
+  width: 72px;
+  height: 72px;
+}
+
+.dice-d12-1 {
+  background-position: -5px -415px;
+  width: 73px;
+  height: 73px;
+}
+
+.dice-d12-3 {
+  background-position: -5px -498px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-4 {
+  background-position: -5px -582px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-6 {
+  background-position: -5px -666px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-10 {
+  background-position: -5px -750px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-8 {
+  background-position: -5px -834px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-9 {
+  background-position: -5px -918px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-5 {
+  background-position: -5px -1002px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-2 {
+  background-position: -5px -1086px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-12 {
+  background-position: -5px -1170px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d6-4 {
+  background-position: -5px -1254px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-11 {
+  background-position: -5px -1338px;
+  width: 74px;
+  height: 74px;
+}
+
+.dice-d12-7 {
+  background-position: -5px -1422px;
+  width: 74px;
+  height: 74px;
+}
+
