@@ -1,21 +1,22 @@
 # ORR - One Ring Roller
 
-Requirements:
+(http://scottmaclure.github.io/one-ring-roller/)
+
+## Requirements
 
 * nodejs
 * bower
 * gulp
 
-To run locally:
+## To run locally
 
 ```
 npm install
 gulp
 ```
 
-Run a local webserver:
+### Run a local webserver
 
 ```
 ./node_modules/http-server/bin/http-server
 ```
-
