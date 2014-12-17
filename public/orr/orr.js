@@ -35,6 +35,98 @@
 
 	}
 
+	/**
+	 * Helper function.
+	 */
+	function updateFeatDie(featDieElem, result, dieEnabled) {
+		if (dieEnabled === void 0) {
+			dieEnabled = true;
+		}
+		var deCss = !dieEnabled ? ' disabledDie' : '';
+		$(featDieElem).removeClass().addClass('d12 dice dice-d12-' + result + deCss);
+	}
+
+	/**
+	 * Roll a d6, update DOM, return totals and flags.
+	 */
+	function rollD6(elem, isWeary) {
+
+		var data = {
+			result: rollDie(6),
+			sixCount: 0,
+			rollTotal: 0
+		};
+
+		if (data.result === 6) {
+			data.sixCount = 1;
+		}
+
+		$(elem).removeClass().addClass('d6 dice dice-d6-' + data.result);
+
+		if (!isWeary || data.result > 3) {
+			data.rollTotal = data.result;
+		}
+
+		return data;
+	}
+
+	function checkUseResult2(keepHighest, isEnemy, result1, result2) {
+
+		// Set the "fail" rune to 0, for this test.
+		// Leave the "success" rune's value alone.
+		if (isEnemy) {
+			// Gandalf rune
+			result1 = result1 === 12 ? 0 : result1;
+			result2 = result2 === 12 ? 0 : result2;
+			// Eye rune
+
+		} else {
+			// Eye rune
+			result1 = result1 === 11 ? 0 : result1;
+			result2 = result2 === 11 ? 0 : result2;
+		}
+
+		if (keepHighest) {
+			return result2 > result1;
+		}
+
+		// Keep lowest.
+		return result2 < result1;
+
+	}
+
+	function getFeatResultData(featResult, isEnemy) {
+
+		var data = {
+			rollTotal: 0,
+			automaticSuccess: false
+		};
+
+		if (featResult <= 10) {
+
+			data.rollTotal = featResult;
+
+		} else if (featResult === 11 && isEnemy) {
+			// Eye rune
+			data.rollTotal = 10;
+			data.automaticSuccess = true;
+		} else if (featResult === 12 && isEnemy) {
+			// Gandalf rune
+			data.rollTotal = 0;
+
+		} else if (featResult === 11 && !isEnemy) {
+			// Eye rune
+			data.rollTotal = 0;
+		} else if (featResult === 12 && !isEnemy) {
+			// Gandalf rune
+			data.automaticSuccess = true;
+			data.rollTotal = 10;
+		}
+
+		return data;
+
+	}
+
 	// Cache semantic elements.
 	var $noRoll = $('#noRoll');
 	var $d6es = $('.d6');
@@ -77,34 +169,48 @@
 		// User wants to roll some success dice.
 		if (successDice) {
 			for (var i = 0; i < successDice; i++) {
-				var $d6 = $($d6es[i]);
-				var result = rollDie(6);
-				if (result === 6) {
-					sixCount += 1;
-				}
-				$d6.removeClass().addClass('d6 dice dice-d6-' + result);
-				if (!isWeary || result > 3) {
-					rollTotal += result;
-				}
+				var data = rollD6($d6es[i], isWeary);
+				sixCount += data.sixCount;
+				rollTotal += data.rollTotal;
 			}
 		}
 
 		// Resolve feat dice.
 		if (featDice) {
-			if (featDice === 1) {
-				var $die = $($d12es[0]);
-				var result = rollDie(12);
-				$die.removeClass().addClass('d12 dice dice-d12-' + result);
-				if (result <= 10) {
-					rollTotal += result;
-				} else if (result === 11 && isEnemy) {
-					// Eye rune
-					automaticSuccess = true;
-				} else if (result === 12 && !isEnemy) {
-					// Gandalf rune
-					automaticSuccess = true;
-				}
+
+			var useResult2 = false;
+
+			if (featDice > 0) {
+				var featResult1 = rollDie(12);
+				updateFeatDie($d12es[0], featResult1);
 			}
+
+			// Roll 2, keep highest.
+			if (featDice === 2) {
+				var keepHighest = true;
+				var featResult2 = rollDie(12);
+				useResult2 = checkUseResult2(keepHighest, isEnemy, featResult1, featResult2);
+				updateFeatDie($d12es[1], featResult2, useResult2);
+			}
+
+			// Roll 2, keep lowest.
+			if (featDice === 3) {
+				var keepHighest = false;
+				var featResult2 = rollDie(12);
+				useResult2 = checkUseResult2(keepHighest, isEnemy, featResult1, featResult2);
+				updateFeatDie($d12es[1], featResult2, useResult2);
+			}
+
+			// Disable featDie1
+			if (useResult2) {
+				updateFeatDie($d12es[0], featResult1, false);
+			}
+
+			// Handle the runes to update the total result
+			var data = !useResult2 ? getFeatResultData(featResult1, isEnemy) : getFeatResultData(featResult2, isEnemy)
+			rollTotal += data.rollTotal;
+			automaticSuccess = data.automaticSuccess;
+
 		}
 
 		// Update and display totals
