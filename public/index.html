@@ -23,6 +23,12 @@
 			.bottomSeparated {
 				margin-bottom: 1em;
 			}
+			.hide {
+				display: none !important;
+			}
+			.dice {
+				display: inline-block;
+			}
 		</style>
 
 	</head>
@@ -118,12 +124,24 @@
 
 		<div class="row">
 			<div class="sm-12 has-gutter">
-				<strong>Results</strong>
+				<strong>Results #<span id="rollCount">0</span></strong>
+			</div>
+			<div class="sm-12 has-gutter">
+				<span id="noRoll">-- press roll first --</span>
+				<span id="1d6" class="dice dice-d6-1 hide"></span>
+				<span id="2d6" class="dice dice-d6-1 hide"></span>
+				<span id="3d6" class="dice dice-d6-1 hide"></span>
+				<span id="4d6" class="dice dice-d6-1 hide"></span>
+				<span id="5d6" class="dice dice-d6-1 hide"></span>
+				<span id="6d6" class="dice dice-d6-1 hide"></span>
+				<span id="1d12" class="dice dice-d12-1 hide"></span>
+				<span id="1d12" class="dice dice-d12-1 hide"></span>
 			</div>
 		</div>
 
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="deps/barekit.min.js"></script>
+		<script src="deps/jquery.serialize-object.min.js"></script>
 		<script src="orr/orr.js"></script>
 
 	</body>

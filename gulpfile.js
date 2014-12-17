@@ -10,7 +10,7 @@ gulp.task('sprites-dice', function () {
 	.pipe(sprite({
 		name: 'sprite-dice',
 		style: 'sprite-dice.css',
-		cssPath: 'orr',
+		cssPath: '',
 		processor: 'css',
 		prefix: 'dice'
 	}))

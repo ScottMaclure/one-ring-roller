@@ -1,8 +1,7 @@
 // ORR JS
 (function ($, undefined) {
 
-	console.debug('document is ready');
-
+	// Bind to form submit event, override with dice rolling.
 	$('form').on('submit', function (event) {
 
 		// Stop form submission.
@@ -10,7 +9,9 @@
 
 		var $form = $(this);
 
-		//var userData = $form.
+		var userData = $form.serializeObject();
+
+		console.debug('userData:', userData);
 
 	});
 
