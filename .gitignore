@@ -1,0 +1,8 @@
+# Ignore deps
+bower_components
+node_modules
+
+# Ignore everything in public except index.html.
+public/*
+!public
+!public/index.html

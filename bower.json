@@ -1,0 +1,13 @@
+{
+  "name": "one-ring-roller",
+  "version": "0.0.0",
+  "authors": [
+    "Scott Maclure <scott@maclure.com.au>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "barekit": "~0.7.0",
+    "jquery": "~2.1.1"
+  }
+}

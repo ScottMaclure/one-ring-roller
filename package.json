@@ -1,0 +1,21 @@
+{
+  "name": "one-ring-roller",
+  "version": "1.0.0",
+  "description": "Online dice roller for The One Ring roleplaying game. http://theonering.info",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "css-sprite": "^0.9.0",
+    "gulp": "^3.8.10",
+    "gulp-if": "^1.2.5",
+    "http-server": "^0.7.4"
+  },
+  "scripts": {
+    "start": "node node_modules/gulp/bin/gulp.js"
+  },
+  "author": "Scott Maclure <scott@maclure.com.au>",
+  "license": "MIT"
+}
