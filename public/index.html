@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en" ng-app="orrApp">
 
 	<head>
 
@@ -43,13 +43,18 @@
 			.disabledDie {
 				opacity: 0.5;
 			}
+
+			/* For AngularJS's ng-cloak attribute. */
+			[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  				display: none !important;
+			}
 		</style>
 
 	</head>
 
 	<body>
 
-		<form name="diceForm" action="#" method="POST">
+		<div ng-controller="OrrCtrl" ng-cloak>
 
 			<div class="row">
 				<div class="sm-8 lg-5 has-gutter">
@@ -57,7 +62,7 @@
 					<div>Alpha v0.0.1</div>
 				</div>
 				<div class="sm-4 lg-7 has-gutter topPaddedSmall bottomSeparated">
-					<input type="submit" value="Roll" class="doRoll"/>
+					<input type="submit" value="Roll" class="doRoll" ng-click="doRoll()"/>
 				</div>
 			</div>
 
@@ -146,7 +151,7 @@
 
 					<div class="row">
 						<div class="sm-12 has-gutter bottomSeparated">
-							<strong>Result @ <span id="rollCount">TBD</span></strong>
+							<strong>Result @ {{result.time | date:'mediumTime'}}</strong>
 						</div>
 					</div>
 					<div class="row">
@@ -178,12 +183,12 @@
 
 			</div>
 
-		</form>
+		</div>
 
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="deps/angular.min.js"></script>
 		<script src="deps/barekit.min.js"></script>
-		<script src="deps/jquery.serialize-object.min.js"></script>
-		<script src="orr/orr.js"></script>
+		<script src="orr/orr-angular.js"></script>
 
 		<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
