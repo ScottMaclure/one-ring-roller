@@ -2,8 +2,6 @@ var gulp = require('gulp');
 var gulpif = require('gulp-if');
 var sprite = require('css-sprite').stream;
 
-var SPRITE_DEST_DIR = 'public/sprites';
-
 // generate sprite.png and _sprite.scss
 gulp.task('sprites-dice', function () {
   return gulp.src('images/dice/*.png')
