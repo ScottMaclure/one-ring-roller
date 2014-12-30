@@ -104,8 +104,6 @@ orrApp.service('diceService', function () {
 
 		getSuccessResultData: function (d6s, isWeary) {
 
-			console.debug('getSuccessResultData, d6s:', d6s);
-
 			var data = {
 				value: 0,
 				type: this.successTypes.normal
@@ -137,6 +135,7 @@ orrApp.service('diceService', function () {
 		}
 
 	};
+
 });
 
 orrApp.controller('OrrCtrl', function ($scope, diceService) {
@@ -146,7 +145,8 @@ orrApp.controller('OrrCtrl', function ($scope, diceService) {
 	$scope.successDice = 3;
 	$scope.isWeary = false;
 	$scope.isEnemy = false;
-	$scope.result = {};
+	// Store all results, not just the current one.
+	$scope.results = [];
 
 	// Event handling.
 	$scope.doRoll = function () {
@@ -163,11 +163,8 @@ orrApp.controller('OrrCtrl', function ($scope, diceService) {
 		var featData = diceService.getFeatResultData(d12s, featDice, $scope.isEnemy);
 		var successData = diceService.getSuccessResultData(d6s, $scope.isWeary);
 
-		console.debug('featData:', featData);
-		console.debug('successData:', successData);
-
-		// Store values into $scope, and update DOM.
-		$scope.result = {
+		// Add a result to the front of the array, for rendering convenience.
+		$scope.results.unshift({
 			// This tells the UI that the dice have been rolled.
 			dateStamp: new Date(),
 			d12s: d12s,
@@ -175,7 +172,7 @@ orrApp.controller('OrrCtrl', function ($scope, diceService) {
 			automaticSuccess: featData.automaticSuccess,
 			type: successData.type,
 			value: featData.value + successData.value
-		};
+		});
 
 	}
 

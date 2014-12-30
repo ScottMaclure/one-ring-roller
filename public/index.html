@@ -153,29 +153,29 @@
 
 					<div class="row">
 						<div class="sm-12 has-gutter bottomSeparated">
-							<strong>Result @
-								<span ng-if="!result.dateStamp">TBD</span>
-								<span ng-if="result.dateStamp">{{result.dateStamp | date:'mediumTime'}}</span>
+							<strong>Result #{{results.length}} @
+								<span ng-if="!results[0].dateStamp">TBD</span>
+								<span ng-if="results[0].dateStamp">{{results[0].dateStamp | date:'mediumTime'}}</span>
 							</strong>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="sm-12 has-gutter">
-							<span ng-if="!result.dateStamp">-- press roll first --</span>
-							<span ng-repeat="d12 in result.d12s" class="dice dice-d12-{{d12.value}}"></span>
-							<span ng-repeat="d6 in result.d6s" class="dice dice-d6-{{d6.value}}"></span>
+							<span ng-if="!results[0].dateStamp">-- press roll first --</span>
+							<span ng-repeat="d12 in results[0].d12s" class="dice dice-d12-{{d12.value}}"></span>
+							<span ng-repeat="d6 in results[0].d6s" class="dice dice-d6-{{d6.value}}"></span>
 						</div>
 					</div>
 
-					<div class="row" ng-if="result.dateStamp">
+					<div class="row" ng-if="results.length > 0">
 						<div class="sm-12 has-gutter">
 							<div class="panel">
 								Result:
-								<strong ng-if="result.automaticSuccess">automatic</strong>
-								<strong>{{result.type}}</strong>
+								<strong ng-if="results[0].automaticSuccess">automatic</strong>
+								<strong>{{results[0].type}}</strong>
 								<span>success of</span>
-								<strong>{{result.value}}</strong>.
+								<strong>{{results[0].value}}</strong>.
 							</div>
 						</div>
 					</div>
