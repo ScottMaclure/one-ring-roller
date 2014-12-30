@@ -125,6 +125,7 @@
 							</label>
 						</div>
 					</div>
+
 					<div class="row bottomSeparated">
 						<div class="sm-12 has-gutter">
 							<strong>Conditions</strong>
@@ -133,13 +134,13 @@
 					<div class="row bottomSeparated">
 						<div class="sm-3 has-gutter">
 							<label class="checkbox">
-								<input name="isWeary" type="checkbox" value="1">
+								<input type="checkbox" ng-model="isWeary">
 								<span>Weary?&nbsp;</span>
 							</label>
 						</div>
 						<div class="sm-3 has-gutter">
 							<label class="checkbox">
-								<input name="isEnemy" type="checkbox" value="1">
+								<input type="checkbox" ng-model="isEnemy">
 								<span>Enemy roll?</span>
 							</label>
 						</div>
@@ -151,22 +152,21 @@
 
 					<div class="row">
 						<div class="sm-12 has-gutter bottomSeparated">
-							<strong>Result @ {{result.time | date:'mediumTime'}}</strong>
+							<strong>Result @
+								<span ng-if="!result.dateStamp">TBD</span>
+								<span ng-if="result.dateStamp">{{result.dateStamp | date:'mediumTime'}}</span>
+							</strong>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="sm-12 has-gutter">
-							<span id="noRoll">-- press roll first --</span>
-							<span class="d12 dice dice-d12-1 hide"></span>
-							<span class="d12 dice dice-d12-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
+							<span ng-if="!result.dateStamp">-- press roll first --</span>
+							<span ng-repeat="d12 in result.d12s" class="dice dice-d12-{{d12.value}}"></span>
+							<span ng-repeat="d6 in result.d6s" class="dice dice-d6-{{d6.value}}"></span>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="sm-12 has-gutter">
 
