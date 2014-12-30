@@ -171,11 +171,13 @@
 					<div class="row" ng-if="results.length > 0">
 						<div class="sm-12 has-gutter">
 							<div class="panel">
-								Result:
-								<strong ng-if="results[0].automaticSuccess">automatic</strong>
-								<strong>{{results[0].type}}</strong>
-								<span>success of</span>
-								<strong>{{results[0].value}}</strong>.
+								<div ng-repeat="result in results" class="bottomSeparated">
+									Result #{{results.length - $index}}:
+									<strong ng-if="result.automaticSuccess">automatic</strong>
+									<strong>{{result.type}}</strong>
+									<span>success of</span>
+									<strong>{{result.value}}</strong>.
+								</div>
 							</div>
 						</div>
 					</div>
