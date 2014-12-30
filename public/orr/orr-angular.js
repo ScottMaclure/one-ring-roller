@@ -41,6 +41,12 @@ orrApp.service('diceService', function () {
 	// Public API
 	return {
 
+		successTypes: {
+			normal: 'normal',
+			great: 'great',
+			extraordinary: 'extraordinary'
+		},
+
 		rollFeatDice: function (featDice) {
 			var d12s = [];
 			switch (featDice) {
@@ -96,6 +102,40 @@ orrApp.service('diceService', function () {
 			data.value = data.value > 10 ? 10 : data.value;
 
 			return data;
+		},
+
+		getSuccessResultData: function (d6s, isWeary) {
+
+			console.debug('getSuccessResultData, d6s:', d6s);
+
+			var data = {
+				value: 0,
+				type: this.successTypes.normal
+			}
+
+			var successCount = 0;
+
+			for (var i = 0; i < d6s.length; i++) {
+
+				var dieValue = d6s[i].value;
+
+				if (!isWeary || dieValue > 3) {
+					data.value += dieValue;
+				}
+
+				if (6 === dieValue) {
+					successCount += 1;
+				}
+
+			}
+
+			if (successCount === 1) {
+				data.type = this.successTypes.great;
+			} else if (successCount > 1) {
+				data.type = this.successTypes.extraordinary;
+			}
+
+			return data;
 		}
 
 	};
@@ -123,15 +163,19 @@ orrApp.controller('OrrCtrl', function ($scope, diceService) {
 
 		// Calculate final result.
 		var featData = diceService.getFeatResultData(d12s, featDice, $scope.isEnemy);
+		var successData = diceService.getSuccessResultData(d6s, $scope.isWeary);
 
 		console.debug('featData:', featData);
+		console.debug('successData:', successData);
 
 		// Store values into $scope, and update DOM.
 		$scope.result = {
 			// This tells the UI that the dice have been rolled.
 			dateStamp: new Date(),
 			d12s: d12s,
-			d6s: d6s
+			d6s: d6s,
+			type: successData.type,
+			value: featData.value + successData.value
 		};
 
 	}
