@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en" ng-app="orrApp">
 
 	<head>
 
@@ -13,11 +13,6 @@
 
 		<link rel="stylesheet" href="deps/barekit.css">
 		<link rel="stylesheet" href="orr/sprite-dice.css">
-
-		<!--[if lt IE 9]>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
-		<![endif]-->
 
 		<!-- TODO Move to SCSS -->
 		<style type="text/css">
@@ -48,13 +43,18 @@
 			.disabledDie {
 				opacity: 0.5;
 			}
+
+			/* For AngularJS's ng-cloak attribute. */
+			[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  				display: none !important;
+			}
 		</style>
 
 	</head>
 
 	<body>
 
-		<form name="diceForm" action="#" method="POST">
+		<div ng-controller="OrrCtrl" ng-cloak>
 
 			<div class="row">
 				<div class="sm-8 lg-5 has-gutter">
@@ -62,7 +62,7 @@
 					<div>Alpha v0.0.1</div>
 				</div>
 				<div class="sm-4 lg-7 has-gutter topPaddedSmall bottomSeparated">
-					<input type="submit" value="Roll" class="doRoll"/>
+					<input type="submit" value="Roll" class="doRoll" ng-click="doRoll()"/>
 				</div>
 			</div>
 
@@ -77,54 +77,56 @@
 						</div>
 						<div class="sm-12 md-9 has-gutter">
 							<label class="radio">
-								<input name="featDice" type="radio" value="1" checked="checked">
+								<input type="radio" ng-model="featDice" value="1">
 								<span>One</span>
 							</label>
 							<label class="radio">
-								<input name="featDice" type="radio" value="2">
+								<input type="radio" ng-model="featDice" value="2">
 								<span>Two high</span>
 							</label>
 							<label class="radio">
-								<input name="featDice" type="radio" value="3">
+								<input type="radio" ng-model="featDice" value="3">
 								<span>Two low</span>
 							</label>
 							<label class="radio">
-								<input name="featDice" type="radio" value="0">
+								<input type="radio" ng-model="featDice" value="0">
 								<span>None</span>
 							</label>
 						</div>
 					</div>
+
 					<div class="row bottomSeparated">
 						<div class="sm-12 md-3 has-gutter bottomSeparated">
 							<strong>Success Dice</strong>
 						</div>
 						<div class="sm-12 md-9 has-gutter">
 							<label class="radio">
-								<input name="successDice" type="radio" value="1">
+								<input type="radio" ng-model="successDice" value="1">
 								<span>One</span>
 							</label>
 							<label class="radio">
-								<input name="successDice" type="radio" value="2">
+								<input type="radio" ng-model="successDice" value="2">
 								<span>Two</span>
 							</label>
 							<label class="radio">
-								<input name="successDice" type="radio" value="3" checked="checked">
+								<input type="radio" ng-model="successDice" value="3">
 								<span>Three</span>
 							</label>
 							<label class="radio">
-								<input name="successDice" type="radio" value="4">
+								<input type="radio" ng-model="successDice" value="4">
 								<span>Four</span>
 							</label>
 							<label class="radio">
-								<input name="successDice" type="radio" value="5">
+								<input type="radio" ng-model="successDice" value="5">
 								<span>Five</span>
 							</label>
 							<label class="radio">
-								<input name="successDice" type="radio" value="6">
+								<input type="radio" ng-model="successDice" value="6">
 								<span>Six</span>
 							</label>
 						</div>
 					</div>
+
 					<div class="row bottomSeparated">
 						<div class="sm-12 has-gutter">
 							<strong>Conditions</strong>
@@ -133,13 +135,13 @@
 					<div class="row bottomSeparated">
 						<div class="sm-3 has-gutter">
 							<label class="checkbox">
-								<input name="isWeary" type="checkbox" value="1">
+								<input type="checkbox" ng-model="isWeary">
 								<span>Weary?&nbsp;</span>
 							</label>
 						</div>
 						<div class="sm-3 has-gutter">
 							<label class="checkbox">
-								<input name="isEnemy" type="checkbox" value="1">
+								<input type="checkbox" ng-model="isEnemy">
 								<span>Enemy roll?</span>
 							</label>
 						</div>
@@ -151,31 +153,32 @@
 
 					<div class="row">
 						<div class="sm-12 has-gutter bottomSeparated">
-							<strong>Result @ <span id="rollCount">TBD</span></strong>
+							<strong>Result #{{results.length}} @
+								<span ng-if="!results[0].dateStamp">TBD</span>
+								<span ng-if="results[0].dateStamp">{{results[0].dateStamp | date:'mediumTime'}}</span>
+							</strong>
 						</div>
 					</div>
-					<div class="row">
-						<div class="sm-12 has-gutter">
-							<span id="noRoll">-- press roll first --</span>
-							<span class="d12 dice dice-d12-1 hide"></span>
-							<span class="d12 dice dice-d12-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-							<span class="d6 dice dice-d6-1 hide"></span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="sm-12 has-gutter">
 
-							<div id="resultText" class="panel hide">
-								Result:
-								<strong><span class="successType">narrow</span></strong>
-								<strong><span id="rollTotal">0</span></strong>.
+					<div class="row">
+						<div class="sm-12 has-gutter">
+							<span ng-if="!results[0].dateStamp">-- press roll first --</span>
+							<span ng-repeat="d12 in results[0].d12s" class="dice dice-d12-{{d12.value}}"></span>
+							<span ng-repeat="d6 in results[0].d6s" class="dice dice-d6-{{d6.value}}"></span>
+						</div>
+					</div>
+
+					<div class="row" ng-if="results.length > 0">
+						<div class="sm-12 has-gutter">
+							<div class="panel">
+								<div ng-repeat="result in results" class="bottomSeparated">
+									Result #{{results.length - $index}}:
+									<strong ng-if="result.automaticSuccess">automatic</strong>
+									<strong>{{result.type}}</strong>
+									<span>success of</span>
+									<strong>{{result.value}}</strong>.
+								</div>
 							</div>
-
 						</div>
 					</div>
 
@@ -183,12 +186,12 @@
 
 			</div>
 
-		</form>
+		</div>
 
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="deps/angular.min.js"></script>
 		<script src="deps/barekit.min.js"></script>
-		<script src="deps/jquery.serialize-object.min.js"></script>
-		<script src="orr/orr.js"></script>
+		<script src="orr/orr-angular.js"></script>
 
 		<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

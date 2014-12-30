@@ -19,7 +19,8 @@ gulp.task('copy-deps', function () {
 	return gulp.src([
 		'bower_components/barekit/css/barekit.css',
 		'bower_components/barekit/js/barekit.min.js',
-		'bower_components/jquery-serialize-object/dist/jquery.serialize-object.min.js'
+		'bower_components/angular/angular.min.js',
+		'bower_components/angular/angular.min.js.map'
 	])
 	.pipe(gulp.dest('public/deps'));
 });
