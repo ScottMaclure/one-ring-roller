@@ -5,8 +5,37 @@ orrApp.service('diceService', function () {
 	/**
 	 * Private helper function.
 	 */
+
 	function rollDie(dieType) {
 		return Math.floor(Math.random() * (dieType)) + 1;
+	}
+
+	function isAutomaticSuccess(dieValue, isEnemy) {
+		return isEnemy ? dieValue === 11 : dieValue === 12;
+	}
+
+	/**
+	 * Set "bad" rune value to 0.
+	 */
+	function getFeatDieValue(featDieValue, isEnemy) {
+		// Set "bad" rune value to 0.
+		featDieValue = isEnemy && featDieValue === 12 ? 0 : featDieValue;
+		featDieValue = !isEnemy && featDieValue === 11 ? 0 : featDieValue;
+		return featDieValue;
+	}
+
+	/**
+	 * Given 2 feat dice, determine the final value.
+	 * Assumes getFeatDieValue has been used to update rune values.
+	 */
+	function getFeatDiceValue(featDieValue1, featDieValue2, featDice) {
+
+		var highestResult = featDieValue1 > featDieValue2 ? featDieValue1 : featDieValue2;
+		var lowestResult = featDieValue1 < featDieValue2 ? featDieValue1 : featDieValue2;
+
+		var takeHighest = featDice === 2;
+
+		return takeHighest ? highestResult : lowestResult;
 	}
 
 	// Public API
@@ -33,6 +62,40 @@ orrApp.service('diceService', function () {
 				d6s.push({ value: rollDie(6) });
 			}
 			return d6s;
+		},
+
+		getFeatResultData: function (d12s, featDice, isEnemy) {
+
+			var data = {
+				automaticSuccess: false,
+				value: 0
+			};
+
+			if (featDice === 0) {
+				return data;
+			}
+
+			// TODO Use reduce from lodash?
+			if (featDice === 1) {
+
+				data.value = getFeatDieValue(d12s[0].value, isEnemy);
+
+			} else {
+
+				// Will set the "bad" rune's value to 0.
+				var featDieValue1 = getFeatDieValue(d12s[0].value, isEnemy);
+				var featDieValue2 = getFeatDieValue(d12s[1].value, isEnemy);
+
+				data.value = getFeatDiceValue(featDieValue1, featDieValue2, featDice);
+
+			}
+
+			data.automaticSuccess = isAutomaticSuccess(data.value, isEnemy);
+
+			// Set "good" rune value to 10, after we've calculated automatic success.
+			data.value = data.value > 10 ? 10 : data.value;
+
+			return data;
 		}
 
 	};
@@ -59,6 +122,9 @@ orrApp.controller('OrrCtrl', function ($scope, diceService) {
 		var d6s = diceService.rollSuccessDice(successDice);
 
 		// Calculate final result.
+		var featData = diceService.getFeatResultData(d12s, featDice, $scope.isEnemy);
+
+		console.debug('featData:', featData);
 
 		// Store values into $scope, and update DOM.
 		$scope.result = {
