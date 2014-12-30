@@ -168,15 +168,15 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row" ng-if="result.dateStamp">
 						<div class="sm-12 has-gutter">
-
-							<div id="resultText" class="panel hide">
+							<div class="panel">
 								Result:
-								<strong><span class="successType">narrow</span></strong>
-								<strong><span id="rollTotal">0</span></strong>.
+								<strong ng-if="result.automaticSuccess">automatic</strong>
+								<strong>{{result.type}}</strong>
+								<span>success of</span>
+								<strong>{{result.value}}</strong>.
 							</div>
-
 						</div>
 					</div>
 

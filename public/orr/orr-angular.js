@@ -2,9 +2,7 @@ var orrApp = angular.module('orrApp', []);
 
 orrApp.service('diceService', function () {
 
-	/**
-	 * Private helper function.
-	 */
+	// Private helper function.
 
 	function rollDie(dieType) {
 		return Math.floor(Math.random() * (dieType)) + 1;
@@ -174,6 +172,7 @@ orrApp.controller('OrrCtrl', function ($scope, diceService) {
 			dateStamp: new Date(),
 			d12s: d12s,
 			d6s: d6s,
+			automaticSuccess: featData.automaticSuccess,
 			type: successData.type,
 			value: featData.value + successData.value
 		};
