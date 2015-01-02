@@ -2,11 +2,5 @@
 bower_components
 node_modules
 
-# Ignore everything in public except index.html.
+# Ignore everything in public - everything inside is copied/compiled/etc.
 public/*
-!public
-!public/index.html
-!public/orr
-public/orr/*
-!public/orr/orr.js
-!public/orr/orr-angular.js
