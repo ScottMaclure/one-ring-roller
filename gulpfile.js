@@ -11,6 +11,15 @@ gulp.task('clean', function (cb) {
   ], cb);
 });
 
+gulp.task('clean-gh-pages', function (cb) {
+  del([
+    '../one-ring-roller-gh-pages/**',
+    '!../one-ring-roller-gh-pages/.git/**',
+    '!../one-ring-roller-gh-pages/.git',
+    '!../one-ring-roller-gh-pages',
+  ], { force: true }, cb);
+});
+
 gulp.task('copy-source-assets', function () {
 	return gulp.src([
 		'source/favicon.ico',
@@ -52,9 +61,9 @@ gulp.task('sprites-dice', function () {
 });
 
 // Used for "publishing" to live. Requires manual steps in CLI afterwards.
-gulp.task('gh-pages', function () {
+gulp.task('gh-pages', [ 'build', 'clean-gh-pages' ], function () {
 	return gulp.src('public/**/*')
-	.pipe(gulp.dest('../one-ring-roller-gh-pages/'));
+	.pipe(gulp.dest('../one-ring-roller-gh-pages'));
 });
 
 gulp.task('build', function(callback) {
