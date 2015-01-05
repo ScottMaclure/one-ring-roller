@@ -9,6 +9,7 @@
   "devDependencies": {
     "barekit": "~0.7.0",
     "jquery": "~1.11.1",
-    "angular": "~1.3.8"
+    "angular": "~1.3.8",
+    "angular-material": "~0.6.1"
   }
 }

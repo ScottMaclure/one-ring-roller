@@ -41,8 +41,17 @@ gulp.task('copy-deps', function () {
 	return gulp.src([
 		'bower_components/barekit/css/barekit.css',
 		'bower_components/barekit/js/barekit.min.js',
+
 		'bower_components/angular/angular.min.js',
-		'bower_components/angular/angular.min.js.map'
+		'bower_components/angular/angular.min.js.map',
+
+		'bower_components/angular-material/angular-material.min.css',
+		'bower_components/angular-material/themes/amber-theme.css',
+
+		'bower_components/angular-aria/angular-aria.js',
+		'bower_components/angular-animate/angular-animate.js',
+		'bower_components/hammerjs/hammer.js',
+		'bower_components/angular-material/angular-material.js'
 	])
 	.pipe(gulp.dest('public/deps'));
 });

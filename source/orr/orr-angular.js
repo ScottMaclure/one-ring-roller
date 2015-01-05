@@ -1,4 +1,4 @@
-var orrApp = angular.module('orrApp', []);
+var orrApp = angular.module('orrApp', [ 'ngMaterial' ]);
 
 orrApp.service('diceService', function () {
 
