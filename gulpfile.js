@@ -79,5 +79,10 @@ gulp.task('build', function(callback) {
 	);
 });
 
+// Rerun the task when a file changes
+gulp.task('watch', function() {
+	gulp.watch('source/**', [ 'build' ]);
+});
+
 // TODO How about a watch task?
-gulp.task('default', ['build']);
+gulp.task('default', ['watch', 'build']);
