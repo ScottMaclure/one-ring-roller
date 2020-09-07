@@ -1,6 +1,6 @@
 # ORR - One Ring Roller
 
-http://scottmaclure.github.io/one-ring-roller/
+https://scott.maclure.info/one-ring-roller/
 
 ## Requirements
 
